@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiénes somos | Vision Stick</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="brand" href="index.html"><img src="assets/logo.png" alt="Logo Vision Stick" /><span>Vision Stick</span></a>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="avances.html">Avances</a></li>
+        <li><a href="equipo.html" class="active">Quiénes somos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-main">
+    <section class="page-hero container">
+      <span class="tag">Equipo</span>
+      <h1>Quiénes somos</h1>
+      <p>Somos un equipo de estudiantes que desarrolla Vision Stick como una propuesta tecnológica inclusiva, combinando investigación, diseño, programación, documentación y trabajo colaborativo.</p>
+      <div class="search-box">
+        <input id="memberSearch" type="search" placeholder="Buscar integrante. Ejemplo: Benjamin, Fernanda, Javier" />
+        <button id="clearMemberSearch" class="btn secondary">Limpiar</button>
+      </div>
+    </section>
+
+    <section class="container roles-grid">
+      <article class="role-card"><h2>Desarrollo tecnológico</h2><p>Javier Martínez y Benjamin Flores</p><span>Hardware, sensores y programación del bastón.</span></article>
+      <article class="role-card"><h2>Investigación y análisis</h2><p>Valentina Santibáñez y Gaspar Jorquera</p><span>Búsqueda de información, justificación y análisis del problema.</span></article>
+      <article class="role-card"><h2>Diseño y difusión</h2><p>Fernanda Silva y Bastian Araya</p><span>Documentación, página web, registro visual y redes sociales.</span></article>
+      <article class="role-card"><h2>Apoyo general</h2><p>Felipe Fernández y Benjamin Pérez</p><span>Resolución de problemas, pruebas y apoyo en tareas del equipo.</span></article>
+    </section>
+    <section class="section container">
+      <div class="section-heading"><span class="tag">Integrantes</span><h2>Nuestro equipo</h2><center><p>Haz clic en un integrante para ver más información sobre quienes somos 🔥.</p></center></div>
+      <div class="team-grid" id="teamGrid">
+        <article class="member-card expandable-member" data-member="bastian araya diseño documentación difusión redes sociales evidencia"><img src="assets/basti.jpg" alt="Bastian Araya"><h3>Bastian Araya</h3><p>Diseño, documentación y difusión</p><div class="member-detail"><strong>Descripción:</strong> Metro de los cojones <br><b>Alias:</b> Poco serio </div></article>
+        <article class="member-card expandable-member" data-member="benjamin flores desarrollo tecnológico hardware programación esp32 sensores"><img src="assets/benjamin.jpeg" alt="Benjamin Flores"><h3>Benjamin Flores</h3><p>Desarrollo tecnológico</p><div class="member-detail"><strong>Descripción:</strong> Me dejas tocarte <br><b>Alias:</b> Skibidi Flores </div></article>
+        <article class="member-card expandable-member" data-member="benjamin pérez benjamin perez apoyo general pruebas resolución problemas"><img src="assets/perez.jpg" alt="Benjamin Pérez"><h3>Benjamin Pérez</h3><p>Apoyo general</p><div class="member-detail"><strong>Descripción:</strong> Quiero queque <br><b>Alias:</b> El tres piernas</div></article>
+        <article class="member-card expandable-member" data-member="felipe fernández felipe fernandez apoyo general pruebas problemas"><img src="assets/felipe.jpg" alt="Felipe Fernández"><h3>Felipe Fernández</h3><p>Apoyo general</p><div class="member-detail"><strong>Descripción:</strong> Universidad ql <br> <b>Alias: </b>Burger </div></article>
+        <article class="member-card expandable-member" data-member="fernanda silva diseño documentación difusión página web evidencias"><img src="assets/fernanda.jpeg" alt="Fernanda Silva"><h3>Fernanda Silva</h3><p>Diseño, documentación y difusión</p><div class="member-detail"><strong>Descripción:</strong> Donde estan <br><b>Alias:</b> Papu Mayor </div></article>
+        <article class="member-card expandable-member" data-member="javier martínez javier martinez desarrollo tecnológico hardware programación sensores"><img src="assets/javi.png" alt="Javier Martínez"><h3>Javier Martínez</h3><p>Desarrollo tecnológico</p><div class="member-detail"><strong>Descripción:</strong> Quiero congelar <br> <b>Alias: </b>Nijavi</div></article>
+        <article class="member-card expandable-member" data-member="gaspar jorquera investigación análisis información problema"><img src="assets/gaspar.jpeg" alt="Gaspar Jorquera"><h3>Gaspar Jorquera</h3><p>Investigación y análisis</p><div class="member-detail"><strong>Descripción:</strong> Coito <br><b> Alias:</b> Goatspar</div></article>
+        <article class="member-card expandable-member" data-member="valentina santibáñez valentina santibanez investigación análisis información"><img src="assets/valentina.png" alt="Valentina Santibáñez"><h3>Valentina Santibáñez</h3><p>Investigación y análisis</p><div class="member-detail"><strong>Descripción:</strong> 👀 <br><b>Alias:</b> Valesbiana </div></article>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-simple">Vision Stick · Proyecto Inicial · 2026</div></footer>
+</body>
+</html>

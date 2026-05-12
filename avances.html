@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avances | Vision Stick</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="brand" href="index.html"><img src="assets/logo.png" alt="Logo Vision Stick" /><span>Vision Stick</span></a>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <ul class="nav-links"><li><a href="index.html">Inicio</a></li><li><a href="avances.html" class="active">Avances</a></li><li><a href="equipo.html">Quiénes somos</a></li></ul>
+    </nav>
+  </header>
+
+  <main class="page-main">
+    <section class="page-hero container">
+      <span class="tag">Bitácora</span>
+      <h1>Avances semanales</h1>
+      <p>Registro ordenado del desarrollo de Vision Stick. Usa el buscador para encontrar una semana específica y haz clic para ver el detalle general.</p>
+      <div class="search-box"><input id="weekSearch" type="search" placeholder="Buscar semana. Ejemplo: semana 3, sensores, diseño" /><button id="clearSearch" class="btn secondary">Limpiar</button></div>
+    </section>
+
+    <section class="container timeline" id="timeline">
+      <article class="week-card expandable-week" id="semana-1" data-week="semana 1 planificación compra materiales asignación tareas equipo">
+        <img src="assets/Semana-1.png" alt="Evidencia semana 1" />
+        <div><span>Semana 1</span><h2>Planificación inicial</h2><p>Definición del problema, organización del equipo, asignación de tareas y primeras ideas para el diseño del prototipo.</p><button class="read-more">Ver avances generales</button><div class="week-detail"><ul><li>Se definió la idea central del proyecto Vision Stick.</li><li>Se asignaron roles de trabajo por integrante.</li><li>Se comenzó la búsqueda de materiales y posibles componentes.</li><li>Se estableció la necesidad de documentar el proceso semanalmente.</li></ul></div></div>
+      </article>
+      <article class="week-card expandable-week" id="semana-2" data-week="semana 2 investigación sensores esp32 gps componentes materiales">
+        <img src="assets/semana-2.jpeg" alt="Evidencia semana 2" />
+        <div><span>Semana 2</span><h2>Investigación de componentes</h2><p>Búsqueda de información sobre sensores, ESP32, formas de alerta y estructura del bastón.</p><button class="read-more">Ver avances generales</button><div class="week-detail"><ul><li>Se investigó el funcionamiento de sensores ultrasónicos.</li><li>Se revisó el uso del ESP32 como controlador del sistema.</li><li>Se definió el uso de motores vibradores como forma de alerta.</li><li>Se compararon opciones para alimentar el prototipo con batería recargable.</li></ul></div></div>
+      </article>
+      <article class="week-card expandable-week" id="semana-3" data-week="semana 3 diseño página web identidad visual prototipo">
+        <img src="assets/semana-3.jpeg" alt="Evidencia semana 3" />
+        <div><span>Semana 3</span><h2>Diseño de página y prototipo</h2><p>Construcción de la primera versión de la página web y organización visual del proyecto.</p><button class="read-more">Ver avances generales</button><div class="week-detail"><ul><li>Se creó una página inicial para presentar el proyecto.</li><li>Se organizaron secciones como inicio, avances y equipo.</li><li>Se comenzó a definir la estética visual de Vision Stick.</li><li>Se preparó contenido para explicar el propósito del bastón.</li></ul></div></div>
+      </article>
+      <article class="week-card expandable-week" id="semana-4" data-week="semana 4 pruebas montaje programación conexiones">
+        <img src="assets/pronto.jpg" alt="Evidencia semana 4" />
+        <div><span>Semana 4</span><h2><i> Cuming soon</i></h2></div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container footer-simple">Vision Stick · Proyecto Inicial · 2026</div></footer>
+</body>
+</html>

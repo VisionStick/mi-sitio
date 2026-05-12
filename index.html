@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vision Stick | Proyecto tecnológico inclusivo</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="brand" href="index.html" aria-label="Inicio Vision Stick"><img src="assets/logo.png" alt="Logo Vision Stick" /><span>Vision Stick</span></a>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="avances.html">Avances</a></li>
+        <li><a href="equipo.html">Quiénes somos</a></li>
+        <li><a href="#materiales">Materiales</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <span class="tag">Proyecto tecnológico inclusivo</span>
+          <h1>Vision Stick: un bastón inteligente para apoyar la movilidad segura.</h1>
+          <p>Vision Stick busca ayudar a personas con discapacidad visual mediante sensores, alertas por vibración y una estructura práctica que facilite detectar obstáculos durante el desplazamiento.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="avances.html">Ver avances</a>
+            <a class="btn secondary" href="equipo.html">Conocer equipo</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="assets/prototipo.jpg" alt="Prototipo del bastón inteligente Vision Stick" />
+          <div class="status-card"><strong>Estado actual</strong><span>Prototipo en desarrollo</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="proyecto">
+      <div class="section-heading">
+        <span class="tag">Sobre el proyecto</span>
+        <h2>¿De qué trata Vision Stick?</h2>
+        <center><p>Es una propuesta tecnológica que integra componentes electrónicos en un bastón para entregar alertas simples, rápidas y útiles al usuario.</p></center>
+      </div>
+      <div class="info-grid">
+        <article class="info-card"><h3>Problema</h3><p>Los obstáculos inesperados pueden dificultar la movilidad y aumentar el riesgo de accidentes en personas con discapacidad visual.</p></article>
+        <article class="info-card"><h3>Solución</h3><p>Crear un bastón con sensores ultrasónicos, vibradores y una placa ESP32 que detecte obstáculos y avise a la persona.</p></article>
+        <article class="info-card"><h3>Objetivo</h3><p>Desarrollar un prototipo funcional, económico y fácil de explicar, documentando cada avance del proceso.</p></article>
+      </div>
+    </section>
+
+    <section class="section soft-bg" id="materiales">
+      <div class="container">
+        <div class="section-heading">
+          <span class="tag">Componentes</span>
+          <h2>Materiales utilizados</h2>
+          <p>Cada material cumple una función dentro del prototipo. Haz clic en cada tarjeta para ver su utilidad.</p>
+        </div>
+        <div class="materials-grid">
+          <article class="material-card expandable-card" data-open="false">
+            <img class="material-img" src="assets/material-esp32.png" alt="ESP32" />
+            <button class="expand-btn"><span>ESP32</span><b>+</b></button>
+            <p class="expand-content">Funciona como el cerebro del proyecto. Recibe la información de los sensores, procesa las distancias y activa las alertas del bastón.</p>
+          </article>
+          <article class="material-card expandable-card" data-open="false">
+            <img class="material-img" src="assets/material-sensores-ultrasonicos.png" alt="Sensores ultrasónicos" />
+            <button class="expand-btn"><span>2 sensores ultrasónicos</span><b>+</b></button>
+            <p class="expand-content">Detectan obstáculos cercanos midiendo distancia. Permiten reconocer elementos al frente o en zonas específicas del bastón.</p>
+          </article>
+          <article class="material-card expandable-card" data-open="false">
+            <img class="material-img" src="assets/material-motores-vibradores.png" alt="Motores vibradores tipo moneda" />
+            <button class="expand-btn"><span>3 motores vibradores tipo moneda</span><b>+</b></button>
+            <p class="expand-content">Entregan alertas físicas mediante vibración. Pueden indicar cercanía, dirección o intensidad del obstáculo detectado.</p>
+          </article>
+          <article class="material-card expandable-card" data-open="false">
+            <img class="material-img" src="assets/material-pantalla-tft.png" alt="Pantalla TFT 2 pulgadas" />
+            <button class="expand-btn"><span>Pantalla TFT 2 pulgadas</span><b>+</b></button>
+            <p class="expand-content">Sirve para monitorear el prototipo durante pruebas, mostrando datos como distancia, estado de sensores o funcionamiento general.</p>
+          </article>
+          <article class="material-card expandable-card" data-open="false">
+            <img class="material-img" src="assets/material-bateria-18650.png" alt="Batería 18650 con módulo de carga" />
+            <button class="expand-btn"><span>Batería 18650 con módulo de carga</span><b>+</b></button>
+            <p class="expand-content">Alimenta el sistema electrónico y permite recargar el prototipo sin depender siempre de una conexión directa al computador.</p>
+          </article>
+          <article class="material-card expandable-card" data-open="false">
+            <img class="material-img" src="assets/material-cables-protoboard.png" alt="Cables, protoboard o PCB simple" />
+            <button class="expand-btn"><span>Cables, protoboard o PCB simple</span><b>+</b></button>
+            <p class="expand-content">Permiten realizar las conexiones entre componentes. La protoboard ayuda en pruebas y la PCB puede usarse para una versión más ordenada.</p>
+          </article>
+          <article class="material-card expandable-card" data-open="false">
+            <img class="material-img" src="assets/material-pvc.jpg" alt="Tubo o estructura de PVC" />
+            <button class="expand-btn"><span>Tubo o estructura de PVC</span><b>+</b></button>
+            <p class="expand-content">Forma la base física del bastón. Debe ser liviano, resistente y cómodo para integrar sensores, batería y cables.</p>
+          </article>
+          <article class="material-card expandable-card" data-open="false">
+            <img class="material-img" src="assets/modulo-de-carga.png" alt="Modulo de carga" />
+            <button class="expand-btn"><span>Modulo de carga</span><b>+</b></button>
+            <p class="expand-content">Suministrara la energia de la bateria, controlando el proceso de carga de manera segura.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="split-card">
+        <div><span class="tag dark-tag">Bitácora</span><h2>Avances semanales con detalle</h2><p>El registro del proyecto permite revisar semanas específicas y desplegar avances generales dentro de la misma página.</p></div>
+        <a class="btn primary" href="avances.html">Ir al registro</a>
+      </div>
+    </section>
+
+    <section class="section container" id="recursos">
+      <div class="section-heading"><span class="tag">Recursos del proyecto</span><h2>Documentación y evidencias</h2><p>Esta sección reúne los elementos principales para respaldar el avance del proyecto: red social, ubicación y registros de trabajo.</p></div>
+      <div class="contact-grid">
+        <a class="contact-card" href="https://www.instagram.com/vision_stick/" target="_blank" rel="noopener"><img src="assets/ins.jpg" alt="Red social del proyecto" /><h3>Red social</h3><p>Espacio para publicar avances, fotografías, videos cortos y novedades de Vision Stick. Cambia este enlace por el Instagram real del equipo.</p></a>
+        <a class="contact-card" href="https://maps.app.goo.gl/pBnp6UoDGaB5fFNg6" target="_blank" rel="noopener"><img src="assets/map.jpg" alt="Ubicación del equipo" /><h3>Ubicación</h3><p>Referencia del lugar donde se desarrolla y presenta el proyecto. Cambia este enlace por la ubicación real si lo necesitan.</p></a>
+        <a class="contact-card" href="avances.html"><img src="assets/evi.jpg" alt="Evidencias del proyecto" /><h3>Evidencias</h3><p>Registro de avances semanales, fotografías del proceso y documentación general del prototipo.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><a class="brand footer-brand" href="index.html"><img src="assets/logo.png" alt="Logo Vision Stick" /><span>Vision Stick</span></a><p>Proyecto tecnológico orientado a inclusión, seguridad y movilidad asistida.</p></div>
+      <div class="footer-links"><a href="index.html">Inicio</a><a href="avances.html">Avances</a><a href="equipo.html">Quiénes somos</a><a href="#materiales">Materiales</a></div>
+      <div class="footer-logos"><img src="assets/tele.jpg" alt="Telemática" /><img src="assets/usm.jpg" alt="USM" /></div>
+    </div>
+  </footer>
+</body>
+</html>
