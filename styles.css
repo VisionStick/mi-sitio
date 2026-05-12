@@ -9,3 +9,21 @@
 
 /* Imágenes en materiales */
 .material-img{width:100%;height:170px;object-fit:cover;border-bottom:1px solid var(--line);background:#eef6ff}.material-card .expand-btn{border-radius:0}.material-card.open .material-img{filter:saturate(1.08)}
+
+.section-description{
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 40px;
+    color: #cfcfcf;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+.team-role{
+    color: #00bfff;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.team-text{
+    color: #d9d9d9;
+    line-height: 1.6;
+}
