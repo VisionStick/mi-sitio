@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ubicación del Bastón | Vision Stick</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/logo.png" type="image/png">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="brand" href="index.html" aria-label="Inicio Vision Stick">
+        <img src="assets/logo.png" alt="Logo Vision Stick" />
+        <span>Vision Stick</span>
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="avances.html">Avances</a></li>
+        <li><a href="equipo.html">Quiénes somos</a></li>
+        <li><a href="index.html#materiales">Materiales</a></li>
+        <li><a href="ubicacion.html" class="active">Ubicación</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="loc-hero">
+      <div class="container loc-hero-grid">
+        <div class="loc-hero-text">
+          <span class="loc-badge">GPS + ESP32 + WiFi del celular</span>
+          <h1>¿Dónde está el bastón?</h1>
+          <p>
+            Consulta la última ubicación registrada por Vision Stick usando el código único
+            del bastón. El sistema está pensado para que familiares o cuidadores puedan
+            revisar la posición aproximada del usuario.
+          </p>
+          <div class="loc-search-card">
+            <label for="codigoBaston">Código del bastón</label>
+            <div class="loc-search-box">
+              <input type="text" id="codigoBaston" placeholder="Ejemplo: quiero queque" />
+              <button onclick="buscarBaston()">Buscar</button>
+            </div>
+            <small>Presiona Enter o el botón Buscar para ver la ubicación.</small>
+          </div>
+        </div>
+        <div class="loc-status-card">
+          <div class="loc-status-icon">📍</div>
+          <h2>Estado del sistema</h2>
+          <p id="estadoSistema">Esperando código de búsqueda...</p>
+          <div class="loc-status-list">
+            <div>
+              <strong>GPS</strong>
+              <span>NEO-8M</span>
+            </div>
+            <div>
+              <strong>Conexión</strong>
+              <span>Zona WiFi del celular</span>
+            </div>
+            <div>
+              <strong>Acceso</strong>
+              <span>Código único</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="loc-dashboard">
+      <div class="container loc-dashboard-grid">
+        <div class="loc-result-panel">
+          <h2>Resultado de búsqueda</h2>
+          <div id="resultadoUbicacion" class="loc-result">
+            Ingresa el código del bastón para consultar su última ubicación registrada.
+          </div>
+          <div class="loc-mini-info">
+            <div>
+              <span>Última actualización</span>
+              <strong id="ultimaActualizacion">Sin datos</strong>
+            </div>
+            <div>
+              <span>Tipo de ubicación</span>
+              <strong>GPS satelital</strong>
+            </div>
+          </div>
+        </div>
+        <div class="loc-map-panel">
+          <iframe
+            id="mapaGPS"
+            src=""
+            width="100%"
+            height="430"
+            loading="lazy">
+          </iframe>
+          <div id="mapPlaceholder" class="loc-map-placeholder">
+            El mapa aparecerá aquí cuando ingreses un código válido.
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="loc-how">
+      <div class="container">
+        <h2>¿Cómo funciona?</h2>
+        <div class="loc-steps-grid">
+          <article class="loc-step-card">
+            <span>1</span>
+            <h3>Obtención de ubicación</h3>
+            <p>El módulo NEO-8M recibe señales satelitales y obtiene coordenadas GPS.</p>
+          </article>
+          <article class="loc-step-card">
+            <span>2</span>
+            <h3>Envío de datos</h3>
+            <p>El ESP32 se conecta a la zona WiFi del celular del usuario para enviar la ubicación.</p>
+          </article>
+          <article class="loc-step-card">
+            <span>3</span>
+            <h3>Consulta familiar</h3>
+            <p>Los familiares ingresan el código del bastón y visualizan la última ubicación registrada.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+    <footer class="footer">
+    <div class="footer-simple">
+        Vision Stick · Proyecto Inicial · 2026
+    </div>
+</footer>
+  <script src="ubicacion.js"></script>
+</body>
+</html>
