@@ -4,7 +4,6 @@ if (menuButton && navLinks) {
   menuButton.addEventListener('click', () => navLinks.classList.toggle('open'));
 }
 
-// Buscador de avances por semana
 const searchInput = document.querySelector('#weekSearch');
 const clearButton = document.querySelector('#clearSearch');
 const weekCards = document.querySelectorAll('.week-card');
@@ -50,7 +49,6 @@ if (clearButton) clearButton.addEventListener('click', () => {
   searchInput.focus();
 });
 
-// Tarjetas desplegables generales
 const expandableCards = document.querySelectorAll('.expandable-card');
 expandableCards.forEach(card => {
   const btn = card.querySelector('.expand-btn');
@@ -61,7 +59,6 @@ expandableCards.forEach(card => {
   });
 });
 
-// Avances expandibles
 const expandableWeeks = document.querySelectorAll('.expandable-week');
 expandableWeeks.forEach(card => {
   const btn = card.querySelector('.read-more');
@@ -71,7 +68,6 @@ expandableWeeks.forEach(card => {
   });
 });
 
-// Buscador de integrantes y detalle personal
 const memberSearch = document.querySelector('#memberSearch');
 const clearMemberSearch = document.querySelector('#clearMemberSearch');
 const memberCards = document.querySelectorAll('.expandable-member');
