@@ -18,16 +18,16 @@
         <li><a href="avances.html">Avances</a></li>
         <li><a href="equipo.html">Quiénes somos</a></li>
         <li><a href="#materiales">Materiales</a></li>
+        <li><a href="ubicacion.html">Ubicación</a></li>
       </ul>
     </nav>
   </header>
-
   <main>
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-text">
           <span class="tag">Proyecto tecnológico inclusivo</span>
-          <h1>Vision Stick: un bastón inteligente para apoyar la movilidad segura.</h1>
+          <h1>Vision Stick: <br> un bastón inteligente para apoyar la movilidad segura.</h1>
           <p>Vision Stick busca ayudar a personas con discapacidad visual mediante sensores, alertas por vibración y una estructura práctica que facilite detectar obstáculos durante el desplazamiento.</p>
           <div class="hero-actions">
             <a class="btn primary" href="avances.html">Ver avances</a>
@@ -40,7 +40,6 @@
         </div>
       </div>
     </section>
-
     <section class="section container" id="proyecto">
       <div class="section-heading">
         <span class="tag">Sobre el proyecto</span>
@@ -53,7 +52,6 @@
         <article class="info-card"><h3>Objetivo</h3><p>Desarrollar un prototipo funcional, económico y fácil de explicar, documentando cada avance del proceso.</p></article>
       </div>
     </section>
-
     <section class="section soft-bg" id="materiales">
       <div class="container">
         <div class="section-heading">
@@ -105,14 +103,28 @@
         </div>
       </div>
     </section>
-
     <section class="section container">
       <div class="split-card">
         <div><span class="tag dark-tag">Bitácora</span><h2>Avances semanales con detalle</h2><p>El registro del proyecto permite revisar semanas específicas y desplegar avances generales dentro de la misma página.</p></div>
         <a class="btn primary" href="avances.html">Ir al registro</a>
       </div>
     </section>
-
+    <section id="ubicacion-baston" class="location-preview">
+    <div class="container">
+        <center><h1>¿Dónde está el bastón?</h1></center>
+        <br>
+        <center><p>
+            Vision Stick puede compartir su ubicación utilizando el módulo GPS NEO-8M
+            conectado al ESP32. Para enviar los datos, el ESP32 se conecta a la zona WiFi
+            del celular de la persona, permitiendo que los familiares puedan consultar la
+            última ubicación registrada del bastón.
+        </p></center>
+        <br>
+        <center><a href="ubicacion.html" class="btn primary">
+            Ver ubicación del bastón
+        </a></center>
+    </div>
+</section>
     <section class="section container" id="recursos">
       <div class="section-heading"><span class="tag">Recursos del proyecto</span><h2>Documentación y evidencias</h2> <center><p>Esta sección reúne los elementos principales para respaldar el avance del proyecto: red social, ubicación y registros de trabajo.</p></center></div>
       <div class="contact-grid">
@@ -122,11 +134,10 @@
       </div>
     </section>
   </main>
-
   <footer class="footer">
     <div class="container footer-grid">
       <div><a class="brand footer-brand" href="index.html"><img src="assets/logo.png" alt="Logo Vision Stick" /><span>Vision Stick</span></a><p>Proyecto tecnológico orientado a inclusión, seguridad y movilidad asistida.</p></div>
-      <div class="footer-links"><a href="index.html">Inicio</a><a href="avances.html">Avances</a><a href="equipo.html">Quiénes somos</a><a href="#materiales">Materiales</a></div>
+      <div class="footer-links"><a href="index.html">Inicio</a><a href="avances.html">Avances</a><a href="equipo.html">Quiénes somos</a><a href="#materiales">Materiales</a><a href="ubicacion.html">Ubicación</a></div>
       <div class="footer-logos"><img src="assets/tele.jpg" alt="Telemática" /><img src="assets/usm.jpg" alt="USM" /></div>
     </div>
   </footer>
