@@ -24,38 +24,9 @@ function mostrarMapa(latitud, longitud) {
   }
 }
 
+// Función modificada para mostrar directamente la fecha enviada por el ESP32
 function formatearFecha(timestamp) {
-  if (!timestamp || timestamp === 0) {
-    return "Sin fecha registrada";
-  }
-
-  const fecha = new Date(timestamp);
-
-  if (isNaN(fecha.getTime())) {
-    return "Sin fecha válida";
-  }
-
-  const ahora = new Date();
-  const diferenciaMs = ahora - fecha;
-
-  const segundos = Math.floor(diferenciaMs / 1000);
-  const minutos = Math.floor(segundos / 60);
-  const horas = Math.floor(minutos / 60);
-  const dias = Math.floor(horas / 24);
-
-  if (segundos < 60) {
-    return "Hace unos segundos";
-  }
-
-  if (minutos < 60) {
-    return `Hace ${minutos} minuto${minutos === 1 ? "" : "s"}`;
-  }
-
-  if (horas < 24) {
-    return `Hace ${horas} hora${horas === 1 ? "" : "s"}`;
-  }
-
-  return `Hace ${dias} día${dias === 1 ? "" : "s"}`;
+  return timestamp || "Actualizando...";
 }
 
 function limpiarMapa() {
@@ -160,7 +131,8 @@ async function buscarBaston() {
     }
 
     if (ultimaActualizacion) {
-      ultimaActualizacion.textContent = formatearFecha(baston.timestamp);
+      // Mostramos directamente la fecha enviada desde ESP32
+      ultimaActualizacion.textContent = baston.ultimaActualizacion || "Actualizando...";
     }
 
     mostrarMapa(latitud, longitud);
