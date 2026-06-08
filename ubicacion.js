@@ -4,8 +4,8 @@ const FIREBASE_BASE_URL = "https://vision-stick-14318-default-rtdb.firebaseio.co
 // La página revisa Firebase cada 3 segundos
 const INTERVALO_ACTUALIZACION = 3000;
 
-// Si pasan más de 60 segundos sin actualización, se muestra como inactivo
-const TIEMPO_INACTIVO = 60000;
+// Si pasan más de 300 segundos sin actualización, se muestra como inactivo
+const TIEMPO_INACTIVO = 300000;
 
 let codigoActual = null;
 let intervaloAutomatico = null;
