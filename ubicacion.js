@@ -47,18 +47,54 @@ function limpiarMapa() {
   }
 }
 
+// Esta función acepta 2 formatos:
+// 1) timestamp numérico: 1780950725000
+// 2) ultimaActualizacion como texto: "08/06/2026 20:32:05"
 function obtenerFechaActualizacion(baston) {
-  if (!baston.timestamp || Number(baston.timestamp) <= 0) {
-    return null;
+  // Caso 1: si existe timestamp numérico
+  if (baston.timestamp && Number(baston.timestamp) > 0) {
+    let timestamp = Number(baston.timestamp);
+
+    // Si viene en segundos, lo transforma a milisegundos
+    if (timestamp < 1000000000000) {
+      timestamp = timestamp * 1000;
+    }
+
+    const fechaTimestamp = new Date(timestamp);
+
+    if (!isNaN(fechaTimestamp.getTime())) {
+      return fechaTimestamp;
+    }
   }
 
-  const fecha = new Date(Number(baston.timestamp));
+  // Caso 2: si viene como texto desde Firebase
+  // Ejemplo: "08/06/2026 20:32:05"
+  if (baston.ultimaActualizacion) {
+    const partes = baston.ultimaActualizacion.trim().split(" ");
 
-  if (isNaN(fecha.getTime())) {
-    return null;
+    if (partes.length >= 2) {
+      const fechaPartes = partes[0].split("/");
+      const horaPartes = partes[1].split(":");
+
+      if (fechaPartes.length === 3 && horaPartes.length === 3) {
+        const dia = Number(fechaPartes[0]);
+        const mes = Number(fechaPartes[1]) - 1;
+        const anio = Number(fechaPartes[2]);
+
+        const hora = Number(horaPartes[0]);
+        const minuto = Number(horaPartes[1]);
+        const segundo = Number(horaPartes[2]);
+
+        const fechaTexto = new Date(anio, mes, dia, hora, minuto, segundo);
+
+        if (!isNaN(fechaTexto.getTime())) {
+          return fechaTexto;
+        }
+      }
+    }
   }
 
-  return fecha;
+  return null;
 }
 
 function calcularTiempoTranscurrido(fecha) {
