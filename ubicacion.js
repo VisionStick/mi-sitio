@@ -12,6 +12,13 @@ let intervaloAutomatico = null;
 let ultimaLatitud = null;
 let ultimaLongitud = null;
 
+// Variables del mapa Leaflet
+let mapaLeaflet = null;
+let marcadorBaston = null;
+let seguimientoActivo = true;
+let coordenadasActuales = null;
+
+// Menú responsive
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 
@@ -21,13 +28,41 @@ if (menuToggle && navLinks) {
   });
 }
 
+// Inicializa el mapa solo una vez
+function inicializarMapa(latitud, longitud) {
+  if (!mapaLeaflet) {
+    mapaLeaflet = L.map("mapaGPS").setView([latitud, longitud], 18);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "© OpenStreetMap"
+    }).addTo(mapaLeaflet);
+
+    marcadorBaston = L.marker([latitud, longitud]).addTo(mapaLeaflet);
+    marcadorBaston.bindPopup("Ubicación actual del bastón");
+  }
+}
+
+// Muestra o actualiza el mapa
 function mostrarMapa(latitud, longitud) {
-  const mapa = document.getElementById("mapaGPS");
   const placeholder = document.getElementById("mapPlaceholder");
 
-  if (!mapa) return;
+  coordenadasActuales = [latitud, longitud];
 
-  mapa.src = `https://www.openstreetmap.org/export/embed.html?bbox=${longitud - 0.005},${latitud - 0.005},${longitud + 0.005},${latitud + 0.005}&layer=mapnik&marker=${latitud},${longitud}`;
+  inicializarMapa(latitud, longitud);
+
+  if (marcadorBaston) {
+    marcadorBaston.setLatLng([latitud, longitud]);
+  }
+
+  // Si el seguimiento está activo, el mapa sigue al bastón
+  // Si está pausado, solo se mueve el marcador, pero el mapa queda libre
+  if (seguimientoActivo && mapaLeaflet) {
+    mapaLeaflet.panTo([latitud, longitud], {
+      animate: true,
+      duration: 0.8
+    });
+  }
 
   if (placeholder) {
     placeholder.classList.add("loc-hidden");
@@ -35,23 +70,27 @@ function mostrarMapa(latitud, longitud) {
 }
 
 function limpiarMapa() {
-  const mapa = document.getElementById("mapaGPS");
   const placeholder = document.getElementById("mapPlaceholder");
 
-  if (mapa) {
-    mapa.src = "";
+  if (marcadorBaston && mapaLeaflet) {
+    mapaLeaflet.removeLayer(marcadorBaston);
+    marcadorBaston = null;
   }
 
   if (placeholder) {
     placeholder.classList.remove("loc-hidden");
   }
+
+  ultimaLatitud = null;
+  ultimaLongitud = null;
+  coordenadasActuales = null;
 }
 
 // Esta función acepta 2 formatos:
 // 1) timestamp numérico: 1780950725000
 // 2) ultimaActualizacion como texto: "08/06/2026 20:32:05"
 function obtenerFechaActualizacion(baston) {
-  // Caso 1: si existe timestamp numérico
+  // Caso 1: timestamp numérico
   if (baston.timestamp && Number(baston.timestamp) > 0) {
     let timestamp = Number(baston.timestamp);
 
@@ -67,8 +106,7 @@ function obtenerFechaActualizacion(baston) {
     }
   }
 
-  // Caso 2: si viene como texto desde Firebase
-  // Ejemplo: "08/06/2026 20:32:05"
+  // Caso 2: fecha como texto
   if (baston.ultimaActualizacion) {
     const partes = baston.ultimaActualizacion.trim().split(" ");
 
@@ -173,12 +211,8 @@ async function cargarUbicacion(codigo, moverPantalla = false) {
 
     const url = `${FIREBASE_BASE_URL}/bastones/${codigo}.json`;
 
-    console.log("Buscando en Firebase:", url);
-
     const respuesta = await fetch(url);
     const baston = await respuesta.json();
-
-    console.log("Respuesta Firebase:", baston);
 
     if (baston === null) {
       resultado.innerHTML = "No se encontró un bastón con ese código.";
@@ -246,7 +280,8 @@ async function cargarUbicacion(codigo, moverPantalla = false) {
       }
     }
 
-    // El mapa se actualiza solo si las coordenadas cambian
+    // El marcador siempre cambia si las coordenadas cambian.
+    // El mapa solo sigue al bastón si seguimientoActivo está en true.
     if (latitud !== ultimaLatitud || longitud !== ultimaLongitud) {
       mostrarMapa(latitud, longitud);
       ultimaLatitud = latitud;
@@ -326,17 +361,65 @@ async function buscarBaston() {
   codigoActual = codigo;
   ultimaLatitud = null;
   ultimaLongitud = null;
+  seguimientoActivo = true;
+
+  const botonSeguimiento = document.getElementById("toggleSeguimiento");
+
+  if (botonSeguimiento) {
+    botonSeguimiento.textContent = "Pausar camara libre";
+  }
 
   await cargarUbicacion(codigoActual, true);
   iniciarActualizacionAutomatica();
 }
 
+// Enter en buscador
 const inputCodigo = document.getElementById("codigoBaston");
 
 if (inputCodigo) {
   inputCodigo.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
       buscarBaston();
+    }
+  });
+}
+
+// Botón para pausar o activar seguimiento automático
+const botonSeguimiento = document.getElementById("toggleSeguimiento");
+
+if (botonSeguimiento) {
+  botonSeguimiento.addEventListener("click", function() {
+    seguimientoActivo = !seguimientoActivo;
+
+    if (seguimientoActivo) {
+      botonSeguimiento.textContent = "Pausar camara libre";
+
+      if (coordenadasActuales && mapaLeaflet) {
+        mapaLeaflet.setView(coordenadasActuales, 18, {
+          animate: true,
+          duration: 0.8
+        });
+      }
+    } else {
+      botonSeguimiento.textContent = "Activar camara libre";
+    }
+  });
+}
+
+// Botón para volver manualmente al bastón
+const botonVolverBaston = document.getElementById("volverBaston");
+
+if (botonVolverBaston) {
+  botonVolverBaston.addEventListener("click", function() {
+    if (coordenadasActuales && mapaLeaflet) {
+      mapaLeaflet.setView(coordenadasActuales, 18, {
+      animate: true,
+      duration: 0.8
+      });
+
+      if (marcadorBaston) {
+        marcadorBaston.openPopup();
+      }
     }
   });
 }
