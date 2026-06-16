@@ -1,10 +1,7 @@
 // Vision Stick - Ubicación real con Firebase
 const FIREBASE_BASE_URL = "https://vision-stick-14318-default-rtdb.firebaseio.com";
 
-// La página revisa Firebase cada 3 segundos
 const INTERVALO_ACTUALIZACION = 3000;
-
-// Si pasan más de 300 segundos sin actualización, se muestra como inactivo
 const TIEMPO_INACTIVO = 300000;
 
 let codigoActual = null;
@@ -12,13 +9,11 @@ let intervaloAutomatico = null;
 let ultimaLatitud = null;
 let ultimaLongitud = null;
 
-// Variables del mapa Leaflet
 let mapaLeaflet = null;
 let marcadorBaston = null;
 let seguimientoActivo = true;
 let coordenadasActuales = null;
 
-// Menú responsive
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 
@@ -28,7 +23,6 @@ if (menuToggle && navLinks) {
   });
 }
 
-// Inicializa el mapa solo una vez
 function inicializarMapa(latitud, longitud) {
   if (!mapaLeaflet) {
     mapaLeaflet = L.map("mapaGPS").setView([latitud, longitud], 18);
@@ -43,7 +37,6 @@ function inicializarMapa(latitud, longitud) {
   }
 }
 
-// Muestra o actualiza el mapa
 function mostrarMapa(latitud, longitud) {
   const placeholder = document.getElementById("mapPlaceholder");
 
@@ -55,8 +48,6 @@ function mostrarMapa(latitud, longitud) {
     marcadorBaston.setLatLng([latitud, longitud]);
   }
 
-  // Si el seguimiento está activo, el mapa sigue al bastón
-  // Si está pausado, solo se mueve el marcador, pero el mapa queda libre
   if (seguimientoActivo && mapaLeaflet) {
     mapaLeaflet.panTo([latitud, longitud], {
       animate: true,
@@ -86,15 +77,10 @@ function limpiarMapa() {
   coordenadasActuales = null;
 }
 
-// Esta función acepta 2 formatos:
-// 1) timestamp numérico: 1780950725000
-// 2) ultimaActualizacion como texto: "08/06/2026 20:32:05"
 function obtenerFechaActualizacion(baston) {
-  // Caso 1: timestamp numérico
   if (baston.timestamp && Number(baston.timestamp) > 0) {
     let timestamp = Number(baston.timestamp);
 
-    // Si viene en segundos, lo transforma a milisegundos
     if (timestamp < 1000000000000) {
       timestamp = timestamp * 1000;
     }
@@ -106,7 +92,6 @@ function obtenerFechaActualizacion(baston) {
     }
   }
 
-  // Caso 2: fecha como texto
   if (baston.ultimaActualizacion) {
     const partes = baston.ultimaActualizacion.trim().split(" ");
 
@@ -136,41 +121,27 @@ function obtenerFechaActualizacion(baston) {
 }
 
 function calcularTiempoTranscurrido(fecha) {
-  if (!fecha) {
-    return "sin tiempo registrado";
-  }
+  if (!fecha) return "sin tiempo registrado";
 
   const ahora = new Date();
   const diferenciaMs = ahora - fecha;
 
-  if (diferenciaMs < 0) {
-    return "recién actualizado";
-  }
+  if (diferenciaMs < 0) return "recién actualizado";
 
   const segundos = Math.floor(diferenciaMs / 1000);
   const minutos = Math.floor(segundos / 60);
   const horas = Math.floor(minutos / 60);
   const dias = Math.floor(horas / 24);
 
-  if (segundos < 60) {
-    return `hace ${segundos} segundo${segundos === 1 ? "" : "s"}`;
-  }
-
-  if (minutos < 60) {
-    return `hace ${minutos} minuto${minutos === 1 ? "" : "s"}`;
-  }
-
-  if (horas < 24) {
-    return `hace ${horas} hora${horas === 1 ? "" : "s"}`;
-  }
+  if (segundos < 60) return `hace ${segundos} segundo${segundos === 1 ? "" : "s"}`;
+  if (minutos < 60) return `hace ${minutos} minuto${minutos === 1 ? "" : "s"}`;
+  if (horas < 24) return `hace ${horas} hora${horas === 1 ? "" : "s"}`;
 
   return `hace ${dias} día${dias === 1 ? "" : "s"}`;
 }
 
 function formatearFechaCompleta(fecha) {
-  if (!fecha) {
-    return "Sin fecha registrada";
-  }
+  if (!fecha) return "Sin fecha registrada";
 
   const dia = String(fecha.getDate()).padStart(2, "0");
   const mes = String(fecha.getMonth() + 1).padStart(2, "0");
@@ -186,9 +157,7 @@ function formatearFechaCompleta(fecha) {
 function obtenerEstadoReal(baston) {
   const fecha = obtenerFechaActualizacion(baston);
 
-  if (!fecha) {
-    return "Sin datos";
-  }
+  if (!fecha) return "Sin datos";
 
   const diferenciaMs = new Date() - fecha;
 
@@ -273,15 +242,11 @@ async function cargarUbicacion(codigo, moverPantalla = false) {
     }
 
     if (ultimaActualizacion) {
-      if (fecha) {
-        ultimaActualizacion.textContent = `${fechaCompleta} (${tiempoPasado})`;
-      } else {
-        ultimaActualizacion.textContent = "Sin fecha registrada";
-      }
+      ultimaActualizacion.textContent = fecha
+        ? `${fechaCompleta} (${tiempoPasado})`
+        : "Sin fecha registrada";
     }
 
-    // El marcador siempre cambia si las coordenadas cambian.
-    // El mapa solo sigue al bastón si seguimientoActivo está en true.
     if (latitud !== ultimaLatitud || longitud !== ultimaLongitud) {
       mostrarMapa(latitud, longitud);
       ultimaLatitud = latitud;
@@ -366,14 +331,13 @@ async function buscarBaston() {
   const botonSeguimiento = document.getElementById("toggleSeguimiento");
 
   if (botonSeguimiento) {
-    botonSeguimiento.textContent = "Pausar camara libre";
+    botonSeguimiento.textContent = "Activar cámara libre";
   }
 
   await cargarUbicacion(codigoActual, true);
   iniciarActualizacionAutomatica();
 }
 
-// Enter en buscador
 const inputCodigo = document.getElementById("codigoBaston");
 
 if (inputCodigo) {
@@ -384,7 +348,6 @@ if (inputCodigo) {
   });
 }
 
-// Botón para pausar o activar seguimiento automático
 const botonSeguimiento = document.getElementById("toggleSeguimiento");
 
 if (botonSeguimiento) {
@@ -392,7 +355,7 @@ if (botonSeguimiento) {
     seguimientoActivo = !seguimientoActivo;
 
     if (seguimientoActivo) {
-      botonSeguimiento.textContent = "Pausar camara libre";
+      botonSeguimiento.textContent = "Activar cámara libre";
 
       if (coordenadasActuales && mapaLeaflet) {
         mapaLeaflet.setView(coordenadasActuales, 18, {
@@ -400,21 +363,25 @@ if (botonSeguimiento) {
           duration: 0.8
         });
       }
+
+      if (marcadorBaston) {
+        marcadorBaston.openPopup();
+      }
+
     } else {
-      botonSeguimiento.textContent = "Activar camara libre";
+      botonSeguimiento.textContent = "Seguir bastón";
     }
   });
 }
 
-// Botón para volver manualmente al bastón
 const botonVolverBaston = document.getElementById("volverBaston");
 
 if (botonVolverBaston) {
   botonVolverBaston.addEventListener("click", function() {
     if (coordenadasActuales && mapaLeaflet) {
       mapaLeaflet.setView(coordenadasActuales, 18, {
-      animate: true,
-      duration: 0.8
+        animate: true,
+        duration: 0.8
       });
 
       if (marcadorBaston) {
