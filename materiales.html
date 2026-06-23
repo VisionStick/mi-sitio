@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Materiales y modelos 3D | Vision Stick</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="brand" href="index.html" aria-label="Inicio Vision Stick"><img src="assets/logo.png" alt="Logo Vision Stick" /><span>Vision Stick</span></a>
+      <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="avances.html">Avances</a></li>
+        <li><a href="equipo.html">Quiénes somos</a></li>
+        <li><a href="materiales.html" class="active">Materiales</a></li>
+        <li><a href="ubicacion.html">Ubicación</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-main">
+    <section class="mat-hero">
+      <div class="container mat-hero-grid">
+        <div class="mat-hero-text">
+          <span class="tag">Materiales y diseño del prototipo</span>
+          <h1>Materiales, componentes y modelos 3D de Vision Stick</h1>
+          <p>Esta página reúne los componentes del prototipo, explica para qué sirve cada uno y permite descargar las piezas 3D diseñadas para el proyecto.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#modelos3d">Ver modelos 3D</a>
+            <a class="btn secondary" href="#materiales-detalle">Ver componentes</a>
+          </div>
+        </div>
+        <div class="mat-hero-card">
+          <img src="assets/prototipo.jpg" alt="Prototipo Vision Stick" />
+          <div class="mat-open-card">
+            <strong>Proyecto replicable</strong>
+            <span>Componentes explicados, piezas STL descargables y documentación pensada para seguir mejorando el bastón.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container mat-summary">
+      <div class="mat-summary-grid">
+        <article><strong>10+</strong><span>componentes del prototipo</span></article>
+        <article><strong>6</strong><span>piezas diseñadas en 3D</span></article>
+        <article><strong>.STL</strong><span>archivos para descargar e imprimir</span></article>
+      </div>
+    </section>
+
+    <section class="section container" id="materiales-detalle">
+      <div class="section-heading">
+        <span class="tag">Componentes</span>
+        <h2>Materiales utilizados</h2>
+        <center><p>Haz clic en cada componente para desplegar su descripción. La idea es que la página sea clara para el equipo, el profesor y cualquier persona que quiera replicar el proyecto.</p></center>
+      </div>
+      <div class="mat-grid">
+
+          <article class="mat-card expandable-card">
+            <img src="assets/material-esp32.png" alt="ESP32" />
+            <button class="expand-btn" type="button"><span>ESP32</span><b>+</b></button>
+            <div class="expand-content">
+              <h4>Microcontrolador principal</h4>
+              <p>Actúa como el cerebro del bastón. Lee los sensores, procesa las distancias, controla los motores vibradores y puede conectarse al WiFi del celular para enviar la ubicación a Firebase.</p>
+            </div>
+          </article>
+
+          <article class="mat-card expandable-card">
+            <img src="assets/NEO-M8N.png" alt="GPS NEO-6M / NEO-M8N" />
+            <button class="expand-btn" type="button"><span>GPS NEO-6M / NEO-M8N</span><b>+</b></button>
+            <div class="expand-content">
+              <h4>Ubicación satelital</h4>
+              <p>Permite obtener latitud, longitud y cantidad de satélites. Actualmente se usa NEO-6M para las pruebas y se proyecta reemplazarlo por NEO-M8N como mejora de recepción.</p>
+            </div>
+          </article>
+
+          <article class="mat-card expandable-card">
+            <img src="assets/material-sensores-ultrasonicos.png" alt="2 sensores ultrasónicos" />
+            <button class="expand-btn" type="button"><span>2 sensores ultrasónicos</span><b>+</b></button>
+            <div class="expand-content">
+              <h4>Detección de obstáculos</h4>
+              <p>Miden distancia por ultrasonido para detectar objetos cercanos. Se ubican en el soporte frontal para cubrir zonas laterales o frontales del bastón.</p>
+            </div>
+          </article>
+
+          <article class="mat-card expandable-card">
+            <img src="assets/material-motores-vibradores.png" alt="3 motores vibradores tipo moneda" />
+            <button class="expand-btn" type="button"><span>3 motores vibradores tipo moneda</span><b>+</b></button>
+            <div class="expand-content">
+              <h4>Alertas hápticas</h4>
+              <p>Entregan vibraciones al usuario. La intensidad o ubicación de la vibración permite advertir cercanía y dirección aproximada del obstáculo.</p>
+            </div>
+          </article>
+
+          <article class="mat-card expandable-card">
+            <img src="assets/uln2003an.png" alt="ULN2003AN" />
+            <button class="expand-btn" type="button"><span>ULN2003AN</span><b>+</b></button>
+            <div class="expand-content">
+              <h4>Control de motores</h4>
+              <p>Funciona como etapa de potencia entre el ESP32 y los motores vibradores. Permite activar los motores sin sobrecargar los pines del microcontrolador.</p>
+            </div>
+          </article>
+
+          <article class="mat-card expandable-card">
+            <img src="assets/material-bateria-18650.png" alt="Batería 18650" />
+            <button class="expand-btn" type="button"><span>Batería 18650</span><b>+</b></button>
+            <div class="expand-content">
+              <h4>Alimentación portátil</h4>
+              <p>Entrega energía al prototipo para que pueda funcionar sin depender del computador. Es ideal para pruebas de movilidad y uso en campo.</p>
+            </div>
+          </article>
+
+          <article class="mat-card expandable-card">
+            <img src="assets/modulo-de-carga.png" alt="Módulo de carga USB-C" />
+            <button class="expand-btn" type="button"><span>Módulo de carga USB-C</span><b>+</b></button>
+            <div class="expand-content">
+              <h4>Carga y gestión de energía</h4>
+              <p>Permite cargar la batería y organizar la alimentación del sistema. Se integra con el diseño 3D de la zona USB del prototipo.</p>
+            </div>
+          </article>
+
+          <article class="mat-card expandable-card">
+            <img src="assets/material-cables-protoboard.png" alt="Cables, protoboard o PCB simple" />
+            <button class="expand-btn" type="button"><span>Cables, protoboard o PCB simple</span><b>+</b></button>
+            <div class="expand-content">
+              <h4>Conexiones y pruebas</h4>
+              <p>Se utilizan para conectar sensores, GPS, motores y placa ESP32. La protoboard sirve para pruebas y una PCB puede ordenar mejor la versión final.</p>
+            </div>
+          </article>
+
+          <article class="mat-card expandable-card">
+            <img src="assets/material-pvc.jpg" alt="Tubo o estructura de PVC" />
+            <button class="expand-btn" type="button"><span>Tubo o estructura de PVC</span><b>+</b></button>
+            <div class="expand-content">
+              <h4>Cuerpo físico del bastón</h4>
+              <p>Estructura base donde se integran sensores, electrónica, cableado y piezas impresas. Debe ser liviana, resistente y cómoda para el usuario.</p>
+            </div>
+          </article>
+
+          <article class="mat-card expandable-card">
+            <img src="assets/material-pantalla-tft.png" alt="Pantalla TFT 2 pulgadas" />
+            <button class="expand-btn" type="button"><span>Pantalla TFT 2 pulgadas</span><b>+</b></button>
+            <div class="expand-content">
+              <h4>Monitoreo de prototipo</h4>
+              <p>Material considerado para pruebas iniciales de visualización. Permite mostrar datos del sistema durante desarrollo, aunque puede retirarse de la versión final para simplificar el diseño.</p>
+            </div>
+          </article>
+      </div>
+    </section>
+
+    <section class="section soft-bg" id="modelos3d">
+      <div class="container">
+        <div class="section-heading">
+          <span class="tag">Archivos de fabricación</span>
+          <h2>Modelos 3D interactivos</h2>
+          <center><p>Los modelos pueden rotarse, acercarse, centrarse y descargarse en formato STL. Están pensados para documentar la fabricación del prototipo y facilitar que otras personas puedan replicar o mejorar el diseño.</p></center>
+        </div>
+        <div class="model-grid">
+
+          <article class="model-card" data-model="assets/usb-vs.stl">
+            <div class="model-viewer" data-src="assets/usb-vs.stl">
+              <div class="model-loading">Cargando modelo 3D...</div>
+            </div>
+            <div class="model-info">
+              <span class="model-ext">Archivo .STL</span>
+              <h3>Usb Vs</h3>
+              <p><strong>Conexión USB-C y batería:</strong> Pieza diseñada para organizar la zona de alimentación, integrando el acceso de carga USB-C y el espacio asociado a la batería del prototipo.</p>
+              <div class="model-actions">
+                <a class="btn primary small-btn" href="assets/usb-vs.stl" download>Descargar STL</a>
+                <button class="btn secondary small-btn model-reset" type="button">Centrar modelo</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="model-card" data-model="assets/guia-de-agarre.stl">
+            <div class="model-viewer" data-src="assets/guia-de-agarre.stl">
+              <div class="model-loading">Cargando modelo 3D...</div>
+            </div>
+            <div class="model-info">
+              <span class="model-ext">Archivo .STL</span>
+              <h3>Guía de agarre</h3>
+              <p><strong>Referencia táctil del mango:</strong> Elemento ubicado en el mango para indicar la zona central de agarre y orientar al usuario mediante una referencia física fácil de reconocer.</p>
+              <div class="model-actions">
+                <a class="btn primary small-btn" href="assets/guia-de-agarre.stl" download>Descargar STL</a>
+                <button class="btn secondary small-btn model-reset" type="button">Centrar modelo</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="model-card" data-model="assets/union-externa.stl">
+            <div class="model-viewer" data-src="assets/union-externa.stl">
+              <div class="model-loading">Cargando modelo 3D...</div>
+            </div>
+            <div class="model-info">
+              <span class="model-ext">Archivo .STL</span>
+              <h3>Unión externa</h3>
+              <p><strong>Conexión visible entre mango y bastón:</strong> Pieza de unión estructural entre el mango y el resto del bastón. Aporta firmeza y mejora el acabado exterior del prototipo.</p>
+              <div class="model-actions">
+                <a class="btn primary small-btn" href="assets/union-externa.stl" download>Descargar STL</a>
+                <button class="btn secondary small-btn model-reset" type="button">Centrar modelo</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="model-card" data-model="assets/union-interna-vs.stl">
+            <div class="model-viewer" data-src="assets/union-interna-vs.stl">
+              <div class="model-loading">Cargando modelo 3D...</div>
+            </div>
+            <div class="model-info">
+              <span class="model-ext">Archivo .STL</span>
+              <h3>Unión interna</h3>
+              <p><strong>Paso y organización de cables:</strong> Pieza interna pensada para ordenar el cableado entre el mando, la electrónica y el cuerpo principal del bastón.</p>
+              <div class="model-actions">
+                <a class="btn primary small-btn" href="assets/union-interna-vs.stl" download>Descargar STL</a>
+                <button class="btn secondary small-btn model-reset" type="button">Centrar modelo</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="model-card" data-model="assets/carcasa-esp-y-esfera-de-contacto.stl">
+            <div class="model-viewer" data-src="assets/carcasa-esp-y-esfera-de-contacto.stl">
+              <div class="model-loading">Cargando modelo 3D...</div>
+            </div>
+            <div class="model-info">
+              <span class="model-ext">Archivo .STL</span>
+              <h3>Carcasa ESP y esfera de contacto</h3>
+              <p><strong>Protección del ESP32:</strong> Carcasa para alojar la placa ESP32 y una esfera de contacto, permitiendo proteger la electrónica y mantener una forma integrada al diseño.</p>
+              <div class="model-actions">
+                <a class="btn primary small-btn" href="assets/carcasa-esp-y-esfera-de-contacto.stl" download>Descargar STL</a>
+                <button class="btn secondary small-btn model-reset" type="button">Centrar modelo</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="model-card" data-model="assets/soporte-sensores.stl">
+            <div class="model-viewer" data-src="assets/soporte-sensores.stl">
+              <div class="model-loading">Cargando modelo 3D...</div>
+            </div>
+            <div class="model-info">
+              <span class="model-ext">Archivo .STL</span>
+              <h3>Soporte sensores</h3>
+              <p><strong>Base para sensores ultrasónicos:</strong> Soporte destinado a fijar los sensores ultrasónicos en una posición estable y orientada correctamente para detectar obstáculos.</p>
+              <div class="model-actions">
+                <a class="btn primary small-btn" href="assets/soporte-sensores.stl" download>Descargar STL</a>
+                <button class="btn secondary small-btn model-reset" type="button">Centrar modelo</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="split-card">
+        <div>
+          <span class="tag dark-tag">Para replicar</span>
+          <h2>Diseñado para ser entendido y mejorado</h2>
+          <p>La idea es que Vision Stick pueda documentarse como proyecto abierto: la página muestra materiales, piezas 3D y avances para que otros estudiantes puedan estudiar, adaptar o continuar el desarrollo.</p>
+        </div>
+        <a class="btn primary" href="avances.html">Ver avances</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><a class="brand footer-brand" href="index.html"><img src="assets/logo.png" alt="Logo Vision Stick" /><span>Vision Stick</span></a><p>Proyecto tecnológico orientado a inclusión, seguridad y movilidad asistida.</p></div>
+      <div class="footer-links"><a href="index.html">Inicio</a><a href="avances.html">Avances</a><a href="equipo.html">Quiénes somos</a><a href="materiales.html">Materiales</a><a href="ubicacion.html">Ubicación</a></div>
+      <div class="footer-logos"><img src="assets/tele.jpg" alt="Telemática" /><img src="assets/usm.jpg" alt="USM" /></div>
+    </div>
+  </footer>
+
+  <script src="modelos3d-data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+  <script src="modelos3d.js"></script>
+</body>
+</html>
