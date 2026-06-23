@@ -301,6 +301,7 @@
   position: relative;
   padding: 30px;
 }
+
 .loc-map-leaflet{
   width: 100%;
   height: 430px;
@@ -309,12 +310,14 @@
   z-index: 1;
   background: #eef4fb;
 }
+
 .map-controls{
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
   margin-bottom: 16px;
 }
+
 .map-controls button{
   border: none;
   border-radius: 999px;
@@ -325,14 +328,389 @@
   color: white;
   transition: 0.2s ease;
 }
+
 .map-controls button:hover{
   background: #1e40af;
   transform: translateY(-2px);
 }
+
 #volverBaston{
   background: #e8f0ff;
   color: #2563eb;
 }
+
 .loc-map-placeholder.loc-hidden{
   display: none;
 }
+
+/* =========================
+   Página materiales + modelos 3D
+   Clases mat- y model- para evitar choques
+========================= */
+.mat-hero{
+  padding:72px 0 42px;
+  background:radial-gradient(circle at top left, rgba(37,99,235,.18), transparent 34%),linear-gradient(135deg,#eef7ff,#ffffff);
+}
+.mat-hero-grid{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:34px;
+  align-items:center;
+}
+.mat-hero-text h1{
+  font-size:clamp(2.1rem,4.8vw,4.1rem);
+  line-height:1.05;
+  letter-spacing:-.04em;
+  margin:12px 0 18px;
+}
+.mat-hero-text p{
+  color:var(--muted);
+  font-size:1.08rem;
+  line-height:1.8;
+  max-width:760px;
+}
+.mat-hero-card{
+  position:relative;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:16px;
+  box-shadow:var(--shadow);
+}
+.mat-hero-card img{
+  width:100%;
+  height:360px;
+  object-fit:cover;
+  border-radius:22px;
+}
+.mat-open-card{
+  position:absolute;
+  left:32px;
+  right:32px;
+  bottom:32px;
+  display:grid;
+  gap:4px;
+  background:rgba(15,23,42,.88);
+  color:white;
+  padding:16px 18px;
+  border-radius:18px;
+  backdrop-filter:blur(10px);
+}
+.mat-open-card span{color:#cbd5e1}.mat-summary{padding-top:28px;padding-bottom:28px}.mat-summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.mat-summary-grid article{background:white;border:1px solid var(--line);border-radius:22px;padding:22px;text-align:center;box-shadow:0 12px 30px rgba(15,23,42,.06)}.mat-summary-grid strong{display:block;font-size:2rem;color:var(--primary);line-height:1}.mat-summary-grid span{display:block;margin-top:8px;color:var(--muted);font-weight:700}.mat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.mat-card{background:white;border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 12px 30px rgba(15,23,42,.06);overflow:hidden}.mat-card img{width:100%;height:185px;object-fit:cover;background:#eef6ff;border-bottom:1px solid var(--line)}.mat-card h4{margin:0 0 8px;color:var(--text)}.mat-card .expand-content p{margin:0;color:var(--muted);line-height:1.65}.mat-index-cta .mat-cta-card{background:linear-gradient(135deg,#0f172a,#1e3a8a)}.model-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}.model-card{background:white;border:1px solid var(--line);border-radius:28px;box-shadow:0 12px 30px rgba(15,23,42,.06);overflow:hidden}.model-viewer{position:relative;width:100%;height:330px;background:#f3f7fb;border-bottom:1px solid var(--line)}.model-viewer canvas{display:block;width:100%!important;height:100%!important}.model-loading,.model-error{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:var(--muted);padding:22px;font-weight:700}.model-info{padding:22px}.model-ext{display:inline-block;background:#dbeafe;color:var(--primary-dark);font-weight:800;border-radius:999px;padding:7px 12px;font-size:.85rem;margin-bottom:12px}.model-info h3{margin:0 0 10px;font-size:1.25rem}.model-info p{color:var(--muted);line-height:1.65;margin:0}.model-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.small-btn{padding:10px 15px;font-size:.92rem}.model-reset{border:0;font-family:inherit;cursor:pointer}.footer-links a[href="materiales.html"]:hover{color:#93c5fd}
+@media (max-width:980px){.mat-hero-grid,.model-grid{grid-template-columns:1fr}.mat-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:680px){.mat-summary-grid,.mat-grid{grid-template-columns:1fr}.mat-hero-card img{height:260px}.model-viewer{height:280px}.model-actions{display:grid}.small-btn{text-align:center}}
+
+/* =====================================================
+   Mejora visual Materiales + Modelos 3D
+   ===================================================== */
+.mat-hero-text h1{
+  max-width: 980px;
+}
+
+.mat-open-card strong::after{
+  content: "";
+}
+
+.mat-grid{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+
+.mat-card{
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 18px 42px rgba(15, 23, 42, .08);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.mat-card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 24px 55px rgba(37, 99, 235, .13);
+  border-color: #bfdbfe;
+}
+
+.mat-card img{
+  height: 260px;
+  object-fit: contain;
+  padding: 24px;
+  background: linear-gradient(135deg, #eef6ff, #f8fbff);
+}
+
+.mat-card .expand-btn{
+  padding: 24px 28px 10px;
+  align-items: flex-start;
+}
+
+.mat-card .expand-btn span{
+  font-size: 1.22rem;
+  line-height: 1.25;
+  color: #0f172a;
+}
+
+.mat-card .expand-btn b{
+  margin-top: -2px;
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, .22);
+}
+
+.mat-card .expand-content{
+  display: block;
+  padding: 0 28px 28px;
+}
+
+.mat-card .expand-content h4{
+  font-size: 1.05rem;
+  color: #1d4ed8;
+  margin: 4px 0 10px;
+}
+
+.mat-card .expand-content p{
+  font-size: 1.02rem;
+  line-height: 1.78;
+  color: #475569;
+}
+
+.mat-card .expand-content p strong{
+  color: #0f172a;
+}
+
+.model-grid{
+  gap: 30px;
+}
+
+.model-card{
+  border-radius: 30px;
+  box-shadow: 0 18px 42px rgba(15, 23, 42, .08);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.model-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 24px 55px rgba(37, 99, 235, .12);
+  border-color: #bfdbfe;
+}
+
+.model-viewer{
+  height: 380px;
+  background: radial-gradient(circle at 50% 42%, #ffffff 0, #edf5ff 48%, #e6effa 100%);
+}
+
+.model-loading,
+.model-error{
+  font-size: 1rem;
+  color: #475569;
+  background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(239,246,255,.92));
+}
+
+.model-loading::before{
+  content: "↻";
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  background: #dbeafe;
+  color: #2563eb;
+  font-size: 1.4rem;
+  animation: modelSpin 1.2s linear infinite;
+}
+
+@keyframes modelSpin{
+  to{ transform: rotate(360deg); }
+}
+
+.model-info{
+  padding: 26px 28px 30px;
+}
+
+.model-info h3{
+  font-size: 1.45rem;
+  letter-spacing: -.02em;
+}
+
+.model-info p{
+  font-size: 1.02rem;
+  line-height: 1.78;
+}
+
+.model-ext{
+  background: #e0ecff;
+  color: #1d4ed8;
+}
+
+.model-actions .btn{
+  white-space: nowrap;
+}
+
+@media (max-width: 980px){
+  .mat-grid{
+    grid-template-columns: 1fr;
+  }
+  .mat-card img{
+    height: 300px;
+  }
+}
+
+@media (max-width: 680px){
+  .mat-card img{
+    height: 235px;
+    padding: 18px;
+  }
+  .model-viewer{
+    height: 300px;
+  }
+  .mat-card .expand-btn,
+  .mat-card .expand-content,
+  .model-info{
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+
+
+/* ===== Ajustes finales Materiales v3 ===== */
+.mat-hero-text h1{
+  max-width: 900px;
+}
+
+.mat-grid{
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 34px !important;
+}
+
+.mat-card{
+  border-radius: 30px !important;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, .08) !important;
+}
+
+.mat-card img{
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: contain !important;
+  padding: 28px !important;
+  background: linear-gradient(135deg, #eef6ff, #f8fbff) !important;
+  border-bottom: 1px solid #dbe7f3 !important;
+}
+
+.mat-card img[src*="material-pvc"],
+.mat-card img[src*="prototipo"]{
+  object-fit: contain !important;
+  padding: 18px !important;
+}
+
+.mat-card .expand-btn{
+  padding: 26px 30px 16px !important;
+  align-items: center !important;
+  background: #fff !important;
+}
+
+.mat-card .expand-btn span{
+  font-size: 1.35rem !important;
+  line-height: 1.25 !important;
+  letter-spacing: -.02em;
+}
+
+.mat-card .expand-btn b{
+  width: 44px !important;
+  height: 44px !important;
+  font-size: 1.4rem !important;
+  background: #dbeafe !important;
+  color: #1d4ed8 !important;
+}
+
+.mat-card.open .expand-btn b{
+  background: #2563eb !important;
+  color: #fff !important;
+}
+
+.mat-card .expand-content{
+  padding: 0 30px 30px !important;
+  border-top: 0 !important;
+}
+
+.expandable-card:not(.open) .expand-content{
+  display: none !important;
+}
+
+.expandable-card.open .expand-content{
+  display: block !important;
+}
+
+.mat-card .expand-content h4{
+  margin: 0 0 12px !important;
+  color: #1d4ed8 !important;
+  font-size: 1.12rem !important;
+  font-weight: 900 !important;
+}
+
+.mat-card .expand-content p{
+  margin: 0 !important;
+  color: #475569 !important;
+  font-size: 1.03rem !important;
+  line-height: 1.78 !important;
+}
+
+.model-viewer{
+  height: 390px !important;
+}
+
+.model-loading,
+.model-error{
+  z-index: 2;
+}
+
+@media (max-width: 980px){
+  .mat-grid{
+    grid-template-columns: 1fr !important;
+  }
+
+  .mat-card img{
+    height: 280px !important;
+  }
+}
+
+@media (max-width: 680px){
+  .mat-card img{
+    height: 230px !important;
+    padding: 18px !important;
+  }
+
+  .mat-card .expand-btn{
+    padding: 22px 22px 14px !important;
+  }
+
+  .mat-card .expand-content{
+    padding: 0 22px 24px !important;
+  }
+}
+
+
+/* Ajustes de seguridad para visor 3D */
+.model-viewer{
+  min-height: 380px;
+  position: relative;
+}
+.model-viewer canvas{
+  display:block;
+  width:100% !important;
+  height:100% !important;
+}
+.model-loading,
+.model-error{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:24px;
+  color:#64748b;
+  font-weight:800;
+  background:#f3f8ff;
+  z-index:5;
+}
+.model-error strong{color:#0f172a;}
